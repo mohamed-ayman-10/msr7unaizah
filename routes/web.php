@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SubMenuController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('migrate', function () {
+    Artisan::call('artisan:migrate');
+    return "DONE";
+});
 
 // Login Dashboard
 Route::get('login', [LoginController::class, 'login'])->name('login')->middleware('guest');
