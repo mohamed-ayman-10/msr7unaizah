@@ -14,7 +14,7 @@ class AssociationController extends Controller
     public function objective()
     {
         $data = array();
-        $association = Association::query()->where('primary_title', 'objective1')->select('title', 'id')->first();
+        $association = Association::query()->where('primary_title', 'objective')->select('title', 'id')->first();
         if ($association) {
             $values = Value::query()->where('association_id', $association->id)->select('title')->get();
             array_push($data, $association, $values);
